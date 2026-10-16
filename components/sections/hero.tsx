@@ -43,13 +43,16 @@ function HeroBackground() {
         preload="metadata"
         poster="/hero-poster.jpg"
         aria-hidden="true"
-        className="absolute inset-0 size-full object-cover"
+        // No mobile (retrato) só ~1/4 da largura do vídeo 16:9 aparece; enquadra a lente da câmera
+        className="absolute inset-0 size-full object-cover max-md:object-[82%_50%]"
       >
         <source src="/hero-video.webm" type="video/webm" />
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
 
       <div aria-hidden="true" className="absolute inset-0 z-[1]" style={{ background: OVERLAY }} />
+      {/* Escurecimento extra só no mobile: a lente em close fica mais clara atrás do texto */}
+      <div aria-hidden="true" className="absolute inset-0 z-[1] bg-brand-bg/20 md:hidden" />
       <div aria-hidden="true" className="grain pointer-events-none absolute inset-0 z-[1] opacity-[0.07] mix-blend-overlay" />
     </>
   );
